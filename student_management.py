@@ -1,10 +1,7 @@
 import sqlite3
-
-# Connect to SQLite database
 conn = sqlite3.connect('students.db')
 cursor = conn.cursor()
 
-# Create tables
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS students (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,7 +33,6 @@ cursor.execute('''
 
 conn.commit()
 
-# Student operations
 def add_student():
     name = input("Enter student name: ")
     age = int(input("Enter age: "))
@@ -86,7 +82,6 @@ def search_student():
     else:
         print("❌ Student not found.\n")
 
-# Attendance functions
 def mark_attendance():
     student_id = int(input("Enter student ID: "))
     date = input("Enter date (YYYY-MM-DD): ")
@@ -109,9 +104,7 @@ def view_attendance():
             print(f"{date}: {status}")
         print()
     else:
-        print("📭 No attendance records found.\n")
-
-# Grade functions
+        print("📭 No attendance records found.\n"
 def add_grade():
     student_id = int(input("Enter student ID: "))
     subject = input("Enter subject: ")
@@ -132,8 +125,6 @@ def view_grades():
         print()
     else:
         print("📭 No grades found.\n")
-
-# Main menu loop
 def main():
     while True:
         print("📚 Student Management System")
